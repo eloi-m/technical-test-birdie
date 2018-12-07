@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from './Components/Header';
 import Table from './Components/Table/Table'
-
+import ColumnSelector from './Components/ColumnSelector'
 
 const TABLE_STYLE = {
     marginTop:"2%",
@@ -27,6 +27,7 @@ class App extends React.Component {
       <div> 
         <Header />
         <div style={BODY_STYLE}> 
+          <ColumnSelector/>
           <div style={TABLE_STYLE}>
             <Table/>
           </div>

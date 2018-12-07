@@ -10,7 +10,7 @@ import data from '../../data.json'
 const columns = [
 	{
 		Header:'Age',
-		accessor:'name'
+		accessor:'age'
 	},
 	{
 		Header: 'Class of Worker',
