@@ -3,8 +3,24 @@ import ReactTable from 'react-table';
 
 import './Table.css';
 
-
 import data from '../../data.json'
+
+import { connect } from "react-redux";
+
+import { loadSelectedColumn } from '../../ducks/data';
+
+
+const mapStateToProps = state => {
+	return { selectedColumn: state.selectedColumn };
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
+	}
+};
+
 
 
 const columns = [
@@ -24,7 +40,13 @@ const columns = [
 
 
 class Table extends React.Component{
-  render() {
+
+
+	render() {
+		const selectedColumn = this.props.selectedColumn;
+
+		console.log(selectedColumn);
+
     return(
 			<ReactTable
 				data={data}
@@ -35,4 +57,4 @@ class Table extends React.Component{
 }
 
 
-export default Table;
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

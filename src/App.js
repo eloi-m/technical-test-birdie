@@ -5,10 +5,10 @@ import Table from './Components/Table/Table'
 import ColumnSelector from './Components/ColumnSelector'
 
 const TABLE_STYLE = {
-    marginTop:"2%",
-    marginBottom:"5%",
-    display:"flex",
-    justifyContent:"center",
+  marginTop:"2%",
+  marginBottom:"5%",
+  display:"flex",
+  justifyContent:"center",
 };
 
 
@@ -17,7 +17,12 @@ const BODY_STYLE = {
 };
 
 
-
+const COLUMN_SELECTOR_TYPE = {
+  display: "flex",
+  justifyContent:"center",
+  alignItems:"center",
+  padding:"2%"
+}
 
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -27,11 +32,13 @@ class App extends React.Component {
       <div> 
         <Header />
         <div style={BODY_STYLE}> 
-          <ColumnSelector/>
+          <div style={COLUMN_SELECTOR_TYPE}>   
+            <ColumnSelector/>
+          </div>
           <div style={TABLE_STYLE}>
             <Table/>
           </div>
-        </div>
+      </div>
       </div>
     );
   }

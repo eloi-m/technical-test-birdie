@@ -9,7 +9,7 @@ const rootReducer = (state = initialState, action) => {
 		case "LOAD_SELECTED_COLUMN":
 			return {
 				...state,
-				data: action.payload
+				selectedColumn: action.payload
 			}
 		default:
 			return state;

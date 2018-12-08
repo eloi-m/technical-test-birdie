@@ -12,10 +12,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-			loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
+		loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
 	}
 };
 
+const BUTTON_STYLE = {
+	width:"33%"
+}
 
 const columns = [
 	{ value: 'age', label: 'Age' },
@@ -67,19 +70,19 @@ class ColumnSelector extends React.Component {
   }
   handleChange = (selectedOption) => {
 		this.setState({ selectedOption });
-		this.props.loadSelectedColumn(selectedOption)
-		console.log(this.state.selectedOption)
-		console.log(this.props.selectedColumn)
+		this.props.loadSelectedColumn(selectedOption.value)
   }
   render() {
     const { selectedOption } = this.state;
 
     return (
-      <Select
-        value={selectedOption}
-        onChange={this.handleChange}
-        options={columns}
-      />
+			<div style={BUTTON_STYLE}> 
+				<Select
+					value={selectedOption}
+					onChange={this.handleChange}
+					options={columns}
+				/>
+			</div>
     );
   }
 }
