@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/technical-test-birdie/node_modules
 /.pnp
 .pnp.js
 

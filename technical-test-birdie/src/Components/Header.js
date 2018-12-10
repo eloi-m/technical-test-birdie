@@ -40,13 +40,26 @@ const VERSION_STYLE = {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Header extends React.Component {
+  state = {users: []}
+  componentDidMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
   render() {
     return (
       <div style={CONTAINER_STYLE}>
         <div style={LOGO_CONTAINER_STYLE}>
           <a href="#" />
         </div>
-        <div style={CLOCK_STYLE} />
+        <div style={CLOCK_STYLE}>
+          <div className="App">
+            <h1>Users</h1>
+              {this.state.users.map(user =>
+                <div key={user.id}>{user.username}</div>
+              )}
+          </div>
+        </div>
         <div style={VERSION_STYLE}>
           <div style={{ marginRight: '15px' }}>
             Test
