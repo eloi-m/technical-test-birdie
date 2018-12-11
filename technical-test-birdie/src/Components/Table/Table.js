@@ -3,58 +3,44 @@ import ReactTable from 'react-table';
 
 import './Table.css';
 
-import data from '../../data.json'
-
-import { connect } from "react-redux";
-
-import { loadSelectedColumn } from '../../ducks/data';
-
-
-const mapStateToProps = state => {
-	return { selectedColumn: state.selectedColumn };
-};
-
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
-	}
-};
+import data2 from '../../data.json'
 
 
 
-const columns = [
-	{
-		Header:'Age',
-		accessor:'age'
-	},
-	{
-		Header: 'Class of Worker',
-		accessor: 'class of worker',
-	},
-	{
-		Header: 'Education',
-		accessor: 'education'
-	}
-]
+
 
 
 class Table extends React.Component{
 
+	createTableColumns(selectedColumn) {
+		const tableColumns = [
+			{
+				Header: selectedColumn,
+				accessor: selectedColumn
+			},
+			{
+				Header: 'count',
+				accessor: 'count',
+			},
+			{
+				Header: 'averageAge',
+				accessor: 'averageAge'
+			}
+		]
+		return tableColumns
+	}
 
 	render() {
-		const selectedColumn = this.props.selectedColumn;
-
-		console.log(selectedColumn);
+	const {selectedColumn, data} = this.props;
 
     return(
 			<ReactTable
 				data={data}
-				columns={columns}
+				columns={this.createTableColumns(selectedColumn)}
 				/>
 		)
-  }
+	}
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Table);
+export default Table;

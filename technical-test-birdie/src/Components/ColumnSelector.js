@@ -71,6 +71,7 @@ class ColumnSelector extends React.Component {
   handleChange = (selectedOption) => {
 		this.setState({ selectedOption });
 		this.props.loadSelectedColumn(selectedOption.value)
+		this.props.onChange(selectedOption.value);
   }
   render() {
     const { selectedOption } = this.state;
@@ -84,7 +85,7 @@ class ColumnSelector extends React.Component {
 				/>
 			</div>
     );
-  }
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ColumnSelector);
