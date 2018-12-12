@@ -2,7 +2,7 @@
 
 const LOAD_SELECTED_COLUMN = 'LOAD_SELECTED_COLUMN';
 const LOAD_DATA = 'LOAD_DATA'
-
+const LOAD_COLUMNS = 'LOAD_COLUMNS'
 
 
 export const loadSelectedColumn = (selectedColumn) => (dispatch) => {
@@ -24,3 +24,14 @@ export const loadData = (selectedColumn) => (dispatch) => {
 	});	
 };
 
+export const loadColumns = (dispatch) => {
+	fetch('/data/columns')
+	.then(res => res.json())
+	.catch((e)=> console.log(e))
+	.then(columns => {
+		dispatch({
+			type: LOAD_COLUMNS, 
+			payload: columns
+		});
+	});	
+};

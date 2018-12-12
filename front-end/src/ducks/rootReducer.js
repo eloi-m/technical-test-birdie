@@ -1,7 +1,8 @@
 
 const initialState = {
 	selectedColumn: null,
-	data: []
+	data: [],
+	columns: []
 };
 
 
@@ -16,6 +17,11 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				data : action.payload
+			}
+		case "LOAD_COLUMNS":
+			return {
+				...state,
+				columns: action.payload
 			}
 		default:
 			return state;

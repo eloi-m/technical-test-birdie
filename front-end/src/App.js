@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { loadSelectedColumn, loadData } from './ducks/data';
+import { loadSelectedColumn, loadData, loadColumns } from './ducks/data';
 
 
 import Header from './Components/Header';
@@ -33,7 +33,8 @@ const COLUMN_SELECTOR_TYPE = {
 const mapStateToProps = state => {
   return {
     selectedColumn: state.selectedColumn,
-    data: state.data
+    data: state.data,
+    columns: state.columns
   };
 };
 
@@ -41,7 +42,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
 	return {
     loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
-    loadData: (selectedColumn) => dispatch(loadData(selectedColumn))
+    loadData: (selectedColumn) => dispatch(loadData(selectedColumn)),
+    loadColumns: () => dispatch(loadColumns())
 	}
 };
 
@@ -49,9 +51,13 @@ const mapDispatchToProps = (dispatch) => {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends React.Component {
+  
+  componentWillMount() {
+    this.props.loadColumns()
+  }
 
   render() {
-    const {data, selectedColumn} = this.props
+    const {data, columns, selectedColumn} = this.props
     return (
       <div> 
         <Header />
