@@ -3,7 +3,8 @@ import Select from 'react-select';
 
 
 const BUTTON_STYLE = {
-	width:"33%"
+	width:"33%",
+	zIndex:50
 }
 
 /*
