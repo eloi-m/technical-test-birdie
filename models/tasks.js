@@ -10,14 +10,17 @@ const Task={
 
 	getColumns:function(callback){
 		return db.query(
-			`SHOW	columns 
+			`SHOW columns 
 			FROM census_learn_sql
 			`, callback);
 	},
 
 	getColumnAttributes:function(callback, selectedColumn){
+		console.log(selectedColumn.replace(/_/g," "))
+
 		return db.query(
-			`SELECT ${selectedColumn},
+			`SELECT 
+				${selectedColumn},
 				COUNT(${selectedColumn}) AS count,
 				AVG(age) as averageAge
 			FROM census_learn_sql

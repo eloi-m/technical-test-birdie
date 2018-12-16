@@ -1,6 +1,6 @@
 
 const initialState = {
-	selectedColumn: null,
+	selectedColumn: "",
 	data: [],
 	columns: []
 };

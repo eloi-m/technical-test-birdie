@@ -6,7 +6,7 @@ import tasks from '../models/tasks';
 router.get('/results/:selectedColumn', function(req, res, next) {
   tasks.getColumnAttributes((err, data, fiedls) => {
     res.json(data)
-    console.log(req.params.selectedColumn)
+    console.log("test", req.params.selectedColumn)
   }, req.params.selectedColumn)
 });
 

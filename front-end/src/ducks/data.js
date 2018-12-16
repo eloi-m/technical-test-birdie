@@ -13,7 +13,7 @@ export const loadSelectedColumn = (selectedColumn) => (dispatch) => {
 };
 
 export const loadData = (selectedColumn) => (dispatch) => {
-	fetch('/data/results/' + selectedColumn)
+	fetch('/data/results/' + selectedColumn.replace(/ /g,"_"))
 	.then(res => res.json())
 	.catch((e)=> console.log(e))
 	.then(data => {
@@ -24,14 +24,14 @@ export const loadData = (selectedColumn) => (dispatch) => {
 	});	
 };
 
-export const loadColumns = (dispatch) => {
+export const loadColumns = () => (dispatch) => {
 	fetch('/data/columns')
 	.then(res => res.json())
 	.catch((e)=> console.log(e))
 	.then(columns => {
 		dispatch({
 			type: LOAD_COLUMNS, 
-			payload: columns
+			payload: columns.map((e) => e.Field)
 		});
 	});	
 };

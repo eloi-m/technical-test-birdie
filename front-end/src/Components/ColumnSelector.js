@@ -1,25 +1,12 @@
 import React from 'react';
 import Select from 'react-select';
-import { connect } from "react-redux";
 
-import { loadSelectedColumn } from '../ducks/data';
-
-
-const mapStateToProps = state => {
-	return { selectedColumn: state.selectedColumn };
-};
-
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
-	}
-};
 
 const BUTTON_STYLE = {
 	width:"33%"
 }
 
+/*
 const columns = [
 	{ value: 'age', label: 'Age' },
 	{ value: 'industry code', label: 'Industry code ' },
@@ -63,14 +50,24 @@ const columns = [
 	{ value: 'year', label: 'Year' },
 	{ value: 'salary range', label: 'Salary range' },
 ];
+*/
 
 class ColumnSelector extends React.Component {
   state = {
     selectedOption: null,
   }
+
+  createColumns = () => {
+	const columns = this.props.columns;
+	return columns.map((e) => {
+		return {
+			value: e,
+			label: e.replace(/^\w/, c => c.toUpperCase())
+	}})
+  }
+
   handleChange = (selectedOption) => {
 		this.setState({ selectedOption });
-		this.props.loadSelectedColumn(selectedOption.value)
 		this.props.onChange(selectedOption.value);
   }
   render() {
@@ -81,11 +78,11 @@ class ColumnSelector extends React.Component {
 				<Select
 					value={selectedOption}
 					onChange={this.handleChange}
-					options={columns}
+					options={this.createColumns()}
 				/>
 			</div>
     );
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ColumnSelector);
+export default ColumnSelector;

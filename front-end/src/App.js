@@ -58,15 +58,18 @@ class App extends React.Component {
 
   render() {
     const {data, columns, selectedColumn} = this.props
+    console.log(selectedColumn)
     return (
       <div> 
         <Header />
         <div style={BODY_STYLE}> 
           <div style={COLUMN_SELECTOR_TYPE}>   
             <ColumnSelector
+              columns = {columns}
               onChange={
                 (newSelection) => 
-                {this.props.loadData(newSelection)}}
+                {this.props.loadData(newSelection)
+                this.props.loadSelectedColumn(newSelection)}}
             />
           </div>
           <div style={TABLE_STYLE}>

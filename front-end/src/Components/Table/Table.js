@@ -3,27 +3,21 @@ import ReactTable from 'react-table';
 
 import './Table.css';
 
-import data2 from '../../data.json'
-
-
-
-
-
 
 class Table extends React.Component{
 
 	createTableColumns(selectedColumn) {
 		const tableColumns = [
 			{
-				Header: selectedColumn,
+				Header: selectedColumn.replace(/^\w/, c => c.toUpperCase()),
 				accessor: selectedColumn
 			},
 			{
-				Header: 'count',
+				Header: 'Count',
 				accessor: 'count',
 			},
 			{
-				Header: 'averageAge',
+				Header: 'Average age',
 				accessor: 'averageAge'
 			}
 		]
