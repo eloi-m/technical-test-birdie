@@ -16,18 +16,19 @@ const Task={
 	},
 
 	getColumnAttributes:function(callback, selectedColumn){
-		const ColumnRequested = selectedColumn.replace(/_/g, " ")
-		console.log(ColumnRequested)
+		const columnRequested = selectedColumn.replace(/_/g, " ") 
+		console.log(columnRequested)
 		return db.query(
 			`SELECT 
-				${ColumnRequested},
-				COUNT(${ColumnRequested}) AS count,
+				\`${columnRequested}\`,
+				COUNT(\`${columnRequested}\`) AS count,
 				AVG(age) as averageAge
 			FROM census_learn_sql
-			GROUP BY ${ColumnRequested}
-			ORDER BY COUNT(${ColumnRequested}) DESC
+			GROUP BY \`${columnRequested}\`
+			ORDER BY COUNT(\`${columnRequested}\`) DESC
 			`,
-			callback);
+			(error, results, fields) => {console.log(error, results, fields);
+				callback(error, results, fields)});
 	},
 
 	

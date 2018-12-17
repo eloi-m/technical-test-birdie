@@ -15,5 +15,10 @@ router.get('/columns', function(req, res, next) {
   })
 });
 
+router.get('/connect', function(req, res, next) {
+  tasks.connect((err, data, fiedls) => {
+    res.json(data)
+  })
+});
 
 export default router;
