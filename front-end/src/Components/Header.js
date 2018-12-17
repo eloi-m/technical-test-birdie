@@ -50,12 +50,12 @@ class Header extends React.Component {
         </div>
         <div style={CLOCK_STYLE}>
           <div className="App">
-            <h1>Users</h1>
+            <div style= {{fontWeight:"bold"}}>Technical test Birdie</div>
           </div>
         </div>
         <div style={VERSION_STYLE}>
           <div style={{ marginRight: '15px' }}>
-            Test
+            Eloi Muratet
           </div>
         </div>
       </div>

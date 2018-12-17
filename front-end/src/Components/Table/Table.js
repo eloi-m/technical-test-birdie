@@ -4,7 +4,7 @@ import Loader from "react-loader";
 
 import './Table.css';
 
-const numberofRowsToSee = 3
+const numberOfDisplayedRows = 100
 
 
 class Table extends React.Component{
@@ -27,27 +27,40 @@ class Table extends React.Component{
 		return tableColumns
 	}
 
-	render() {
+	renderTable() {
 		const {selectedColumn, data} = this.props;
-		console.log(data)
 		return(
-			<div> 
+			<div>
 				<ReactTable
 					data={data}
 					columns={this.createTableColumns(selectedColumn)}
 
 					showPagination={false}
-					defaultPageSize = {data.length === 0 ? 3 : data.length}
+					pageSize = {data.length > numberOfDisplayedRows ? numberOfDisplayedRows : data.length}
 					className = "-striped -highlight"
 				/>
 				<div style={{fontStyle:"italic", padding:"5%"}}> 
-					{data.length < numberofRowsToSee 
+					{data.length < numberOfDisplayedRows
 						? null
-						: data.slice(numberofRowsToSee - data.length).length + " rows omitted"
-					}
+						: data.slice(numberOfDisplayedRows - data.length).length + " rows omitted"
+				}
 				</div>
+		</div>
+		)
+	}
+
+	render() {
+		const {data} = this.props
+		return(
+			<div style = {{width:"50%"}}>
+				{data.length > 0 
+					? this.renderTable()
+					: <div style={{fontStyle:"italic", margin:"5%", display:"flex", justifyContent:"center"}}> 
+							Please select a column
+					</div>
+				}
 			</div>
-			)
+		)
 	}
 }
 

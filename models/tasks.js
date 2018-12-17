@@ -26,9 +26,7 @@ const Task={
 			FROM census_learn_sql
 			GROUP BY \`${columnRequested}\`
 			ORDER BY COUNT(\`${columnRequested}\`) DESC
-			`,
-			(error, results, fields) => {console.log(error, results, fields);
-				callback(error, results, fields)});
+			`, callback);
 	},
 
 	
