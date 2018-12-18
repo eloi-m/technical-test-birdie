@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { loadSelectedColumn, loadData, loadColumns } from './ducks/data';
+import { loadSelectedColumn, loadData, loadColumns, } from './ducks/data';
 
 
 import Header from './Components/Header';
@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
     loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
     loadData: (selectedColumn) => dispatch(loadData(selectedColumn)),
-    loadColumns: () => dispatch(loadColumns())
+    loadColumns: () => dispatch(loadColumns()),
 	}
 };
 

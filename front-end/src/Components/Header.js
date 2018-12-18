@@ -1,5 +1,4 @@
 import React from 'react';
-// import Clock from './Clock.js';
 
 const CONTAINER_STYLE = {
   height: '50px',
@@ -21,17 +20,14 @@ const ELEMENT_STYLE = {
   alignItems: 'center',
 };
 
-const LOGO_CONTAINER_STYLE = {
-  ...ELEMENT_STYLE,
-};
 
-const CLOCK_STYLE = {
+const TITLE_STYLE = {
   ...ELEMENT_STYLE,
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
 };
 
-const VERSION_STYLE = {
+const NAME_STYLE = {
   ...ELEMENT_STYLE,
   alignItems: 'center',
   justifyContent: 'flex-end',
@@ -40,20 +36,18 @@ const VERSION_STYLE = {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Header extends React.Component {
-  state = {users: []}
 
   render() {
     return (
       <div style={CONTAINER_STYLE}>
-        <div style={LOGO_CONTAINER_STYLE}>
-          <a href="#" />
-        </div>
-        <div style={CLOCK_STYLE}>
-          <div className="App">
-            <div style= {{fontWeight:"bold"}}>Technical test Birdie</div>
+        <div style={TITLE_STYLE}>
+          <div>
+            <div style= {{fontWeight:"bold", marginLeft: '15px'}}>
+              Technical test Birdie
+            </div>
           </div>
         </div>
-        <div style={VERSION_STYLE}>
+        <div style={NAME_STYLE}>
           <div style={{ marginRight: '15px' }}>
             Eloi Muratet
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import Loader from "react-loader";
+import PropTypes from 'prop-types';
 
 import './Table.css';
 
@@ -8,6 +8,11 @@ const numberOfDisplayedRows = 100
 
 
 class Table extends React.Component{
+
+	static PropTypes = {
+		selectedColumns: PropTypes.string,
+	}
+
 
 	createTableColumns(selectedColumn) {
 		const tableColumns = [
@@ -27,8 +32,7 @@ class Table extends React.Component{
 		return tableColumns
 	}
 
-	renderTable() {
-		const {selectedColumn, data} = this.props;
+	renderTable(selectedColumn, data) {
 		return(
 			<div>
 				<ReactTable
@@ -50,11 +54,12 @@ class Table extends React.Component{
 	}
 
 	render() {
-		const {data} = this.props
+		const {selectedColumn = "", data = []} = this.props;
+
 		return(
 			<div style = {{width:"50%"}}>
 				{data.length > 0 
-					? this.renderTable()
+					? this.renderTable(selectedColumn, data)
 					: <div style={{fontStyle:"italic", margin:"5%", display:"flex", justifyContent:"center"}}> 
 							Please select a column
 					</div>
