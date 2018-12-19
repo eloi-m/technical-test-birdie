@@ -1,4 +1,5 @@
 export default config = {
     numberOfDisplayedRows = 100,
-    invitationToSelectColumn = 'Please select a column'
+    invitationToSelectColumn = 'Please select a column',
+    filteredColumn = ['age']
 }
