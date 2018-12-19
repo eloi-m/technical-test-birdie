@@ -71,12 +71,14 @@ class App extends React.Component {
                 (newSelection) => 
                 {this.props.loadData(newSelection)
                 this.props.loadSelectedColumn(newSelection)}}
+              config = {config}
             />
           </div>
           <div style={TABLE_STYLE}>
             <Table
               data = {data}
               selectedColumn = {selectedColumn}
+              config = {config}
               />
           </div>
       </div>

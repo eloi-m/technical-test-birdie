@@ -12,9 +12,13 @@ class ColumnSelector extends React.Component {
     selectedOption: null,
   }
 
-  createColumns = () => {
+  createOptions = () => {
 	const {columns = []} = this.props;
-	return columns.map((e) => {
+	const {config} = this.props;
+
+	const options = columns.filter((e) => !config.filteredColumn.includes(e))
+
+	return options.map((e) => {
 		return {
 			value: e,
 			label: e.replace(/^\w/, c => c.toUpperCase())
@@ -33,7 +37,7 @@ class ColumnSelector extends React.Component {
 				<Select
 					value={selectedOption}
 					onChange={this.handleChange}
-					options={this.createColumns()}
+					options={this.createOptions()}
 				/>
 			</div>
     );

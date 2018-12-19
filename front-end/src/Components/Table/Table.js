@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import './Table.css';
 
-const numberOfDisplayedRows = 100
-
 
 class Table extends React.Component{
 
@@ -32,7 +30,8 @@ class Table extends React.Component{
 		return tableColumns
 	}
 
-	renderTable(selectedColumn, data) {
+	renderTable(selectedColumn, data, config) {
+		const numberOfDisplayedRows = config.numberOfDisplayedRows
 		return(
 			<div>
 				<ReactTable
@@ -55,13 +54,14 @@ class Table extends React.Component{
 
 	render() {
 		const {selectedColumn = "", data = []} = this.props;
+		const  {config} = this.props;
 
 		return(
 			<div style = {{width:"50%"}}>
 				{data.length > 0 
-					? this.renderTable(selectedColumn, data)
+					? this.renderTable(selectedColumn, data, config)
 					: <div style={{fontStyle:"italic", margin:"5%", display:"flex", justifyContent:"center"}}> 
-							Please select a column
+							{config.invitationToSelectColumn}
 					</div>
 				}
 			</div>
