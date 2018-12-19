@@ -34,29 +34,28 @@ const NAME_STYLE = {
 };
 
 const RESET_CSS_STYLE = {
-  color:"white",
-  textDecoration: "none"
-}
+  color: 'white',
+  textDecoration: 'none',
+};
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Header extends React.Component {
-
   render() {
-    const {config} = this.props
+    const { config } = this.props;
     return (
       <div style={CONTAINER_STYLE}>
         <div style={TITLE_STYLE}>
           <div>
-            <div style= {{fontWeight:"bold", marginLeft: '15px'}}>
+            <div style={{ fontWeight: 'bold', marginLeft: '15px' }}>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href='#' style ={RESET_CSS_STYLE} target={"_blank"}> 
+              <a href="#" style={RESET_CSS_STYLE}>
                 Technical test Birdie
               </a>
             </div>
           </div>
         </div>
         <div style={NAME_STYLE}>
-          <a href={config.linkToMyLinkedin} style ={RESET_CSS_STYLE} target={"_blank"}> 
+          <a href={config.linkToMyLinkedin} style={RESET_CSS_STYLE} target="_blank">
             <div style={{ marginRight: '15px' }}>
               {config.name}
             </div>
@@ -68,4 +67,3 @@ class Header extends React.Component {
 }
 
 export default Header;
-
