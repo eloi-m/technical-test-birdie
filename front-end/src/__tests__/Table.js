@@ -89,7 +89,12 @@ const MOCK_DATA = [
     "averageAge": 54.2831
   }
 ]
-const MOCK_SELECTED_COLUMN = "education"
+const MOCK_SELECTED_COLUMN = "education";
+const MOCK_CONFIG = {
+  numberOfDisplayedRows: 100,
+  invitationToSelectColumn : 'Please select a column',
+  filteredColumn: ['age']
+};
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -97,6 +102,7 @@ it('renders without crashing', () => {
         <Table
             data={MOCK_DATA}
             selectedColumn={MOCK_SELECTED_COLUMN}
+            config = {MOCK_CONFIG}
         />
     , div);
 });
@@ -108,6 +114,7 @@ it('renders without crashing', () => {
         <Table
             data={undefined}
             selectedColumn={undefined}
+            config = {MOCK_CONFIG}
         />
     , div);
 });
