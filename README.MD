@@ -1,7 +1,11 @@
-## How to run this test ? 
+## Introduction
 
-To run this test, please run : 
+This test was made using `express-generator` for the back-end and `create-react-app` for the front-end.
 
-### `npm install && npm start`
+## Install packages
 
-In the root folder and in the `front-end` folder.  
+To install packages, please run `npm install && cd front-end && npm install` in the root folder.
+
+## Run the app
+
+To run the app, please run `npm run start-app` in the root folder.

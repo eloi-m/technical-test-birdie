@@ -1,35 +1,37 @@
 import db from '../dbconnections';
 
-const Task={
-	connect:function(callback){
-		return db.query(
-			`SELECT *
+const Task = {
+  connect(callback) {
+    return db.query(
+      `SELECT *
 			FROM census_learn_sql limit 10
-			`,callback);
-		},
+			`, callback,
+    );
+  },
 
-	getColumns:function(callback){
-		return db.query(
-			`SHOW columns 
+  getColumns(callback) {
+    return db.query(
+      `SHOW columns 
 			FROM census_learn_sql
-			`, callback);
-	},
+			`, callback,
+    );
+  },
 
-	getColumnAttributes:function(callback, selectedColumn){
-		const columnRequested = selectedColumn.replace(/_/g, " ") 
-		console.log(columnRequested)
-		return db.query(
-			`SELECT 
+  getColumnAttributes(callback, selectedColumn) {
+    const columnRequested = selectedColumn.replace(/_/g, ' ');
+    return db.query(
+      `SELECT 
 				\`${columnRequested}\`,
 				COUNT(\`${columnRequested}\`) AS count,
 				AVG(age) as averageAge
 			FROM census_learn_sql
 			GROUP BY \`${columnRequested}\`
 			ORDER BY COUNT(\`${columnRequested}\`) DESC
-			`, callback);
-	},
+			`, callback,
+    );
+  },
 
-	
+
 };
 
 

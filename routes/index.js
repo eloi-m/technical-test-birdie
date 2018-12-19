@@ -1,24 +1,25 @@
 import { Router } from 'express';
-var router = Router();
 import tasks from '../models/tasks';
 
+const router = Router();
 
-router.get('/results/:selectedColumn', function(req, res, next) {
+
+router.get('/results/:selectedColumn', (req, res, next) => {
   tasks.getColumnAttributes((err, data, fiedls) => {
-    res.json(data)
-  }, req.params.selectedColumn)
+    res.json(data);
+  }, req.params.selectedColumn);
 });
 
-router.get('/columns', function(req, res, next) {
+router.get('/columns', (req, res, next) => {
   tasks.getColumns((err, data, fiedls) => {
-    res.json(data)
-  })
+    res.json(data);
+  });
 });
 
-router.get('/connect', function(req, res, next) {
+router.get('/connect', (req, res, next) => {
   tasks.connect((err, data, fiedls) => {
-    res.json(data)
-  })
+    res.json(data);
+  });
 });
 
 export default router;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { loadSelectedColumn, loadData, loadColumns, } from './ducks/data';
+import { loadSelectedColumn, loadData, loadColumns, setLoadFalse} from './ducks/data';
 
 import Header from './Components/Header';
 import Table from './Components/Table/Table'
@@ -35,7 +35,8 @@ const mapStateToProps = state => {
   return {
     selectedColumn: state.selectedColumn,
     data: state.data,
-    columns: state.columns
+    columns: state.columns,
+    loaded: state.loaded
   };
 };
 
@@ -45,6 +46,7 @@ const mapDispatchToProps = (dispatch) => {
     loadSelectedColumn: (selectedColumn) => dispatch(loadSelectedColumn(selectedColumn)),
     loadData: (selectedColumn) => dispatch(loadData(selectedColumn)),
     loadColumns: () => dispatch(loadColumns()),
+    setLoadFalse: () => dispatch(setLoadFalse())
 	}
 };
 
@@ -55,10 +57,16 @@ class App extends React.Component {
   
   componentWillMount() {
     this.props.loadColumns()
+
   }
 
   render() {
-    const { data = [], columns = [], selectedColumn = "" } = this.props
+    const { 
+      data = [], 
+      columns = [], 
+      selectedColumn = "", 
+      loaded
+    } = this.props
 
 
     return (
@@ -70,7 +78,8 @@ class App extends React.Component {
               columns = {columns.map((e) => e.Field)}
               onChange={
                 (newSelection) => 
-                {this.props.loadData(newSelection)
+                {this.props.setLoadFalse()
+                this.props.loadData(newSelection)
                 this.props.loadSelectedColumn(newSelection)}}
               config = {config}
             />
@@ -80,6 +89,7 @@ class App extends React.Component {
               data = {data}
               selectedColumn = {selectedColumn}
               config = {config}
+              loaded = {loaded}
               />
           </div>
       </div>

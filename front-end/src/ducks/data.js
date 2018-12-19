@@ -1,9 +1,9 @@
 // /src/ducks/data.js
 
 const LOAD_SELECTED_COLUMN = 'LOAD_SELECTED_COLUMN';
-const LOAD_DATA = 'LOAD_DATA'
-const LOAD_COLUMNS = 'LOAD_COLUMNS'
-
+const LOAD_DATA = 'LOAD_DATA';
+const LOAD_COLUMNS = 'LOAD_COLUMNS';
+const SET_LOAD_FALSE = 'SET_LOAD_FALSE';
 
 export const loadSelectedColumn = (selectedColumn) => (dispatch) => {
 	dispatch({
@@ -19,7 +19,7 @@ export const loadData = (selectedColumn) => (dispatch) => {
 	.then(data => {
 		dispatch({
 			type: LOAD_DATA, 
-			payload: data
+			payload: {data, loaded:true}
 		});
 	});	
 };
@@ -35,4 +35,13 @@ export const loadColumns = () => (dispatch) => {
 		});
 	});	
 };
+
+export const setLoadFalse = () => (dispatch) => {
+	dispatch({
+		type: SET_LOAD_FALSE, 
+		payload: false
+	});
+};	
+
+
 

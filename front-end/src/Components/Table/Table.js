@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader';
 
 import './Table.css';
 
@@ -53,17 +54,20 @@ class Table extends React.Component{
 	}
 
 	render() {
-		const {selectedColumn = "", data = []} = this.props;
+		const {selectedColumn = "", data = [], loaded} = this.props;
+
 		const  {config} = this.props;
 
 		return(
 			<div style = {{width:"50%"}}>
-				{data.length > 0 
-					? this.renderTable(selectedColumn, data, config)
-					: <div style={{fontStyle:"italic", margin:"5%", display:"flex", justifyContent:"center"}}> 
-							{config.invitationToSelectColumn}
-					</div>
+				<Loader loaded={loaded}>
+					{data.length > 0 
+						? this.renderTable(selectedColumn, data, config)
+						: <div style={{fontStyle:"italic", margin:"5%", display:"flex", justifyContent:"center"}}> 
+								{config.invitationToSelectColumn}
+						</div>
 				}
+				</Loader>
 			</div>
 		)
 	}
