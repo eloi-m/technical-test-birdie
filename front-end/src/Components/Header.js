@@ -33,24 +33,34 @@ const NAME_STYLE = {
   justifyContent: 'flex-end',
 };
 
+const RESET_CSS_STYLE = {
+  color:"white",
+  textDecoration: "none"
+}
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Header extends React.Component {
 
   render() {
+    const {config} = this.props
     return (
       <div style={CONTAINER_STYLE}>
         <div style={TITLE_STYLE}>
           <div>
             <div style= {{fontWeight:"bold", marginLeft: '15px'}}>
-              Technical test Birdie
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a href='#' style ={RESET_CSS_STYLE} target={"_blank"}> 
+                Technical test Birdie
+              </a>
             </div>
           </div>
         </div>
         <div style={NAME_STYLE}>
-          <div style={{ marginRight: '15px' }}>
-            Eloi Muratet
-          </div>
+          <a href={config.linkToMyLinkedin} style ={RESET_CSS_STYLE} target={"_blank"}> 
+            <div style={{ marginRight: '15px' }}>
+              {config.name}
+            </div>
+          </a>
         </div>
       </div>
     );

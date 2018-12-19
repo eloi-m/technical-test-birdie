@@ -71,7 +71,9 @@ class App extends React.Component {
 
     return (
       <div> 
-        <Header />
+        <Header
+          config = {config}
+        />
         <div style={BODY_STYLE}> 
           <div style={COLUMN_SELECTOR_TYPE}>   
             <ColumnSelector
