@@ -55,7 +55,7 @@ class Header extends React.Component {
           </div>
         </div>
         <div style={NAME_STYLE}>
-          <a href={config.linkToMyLinkedin} style={RESET_CSS_STYLE} target="_blank">
+          <a href={config.linkToMyLinkedin} style={RESET_CSS_STYLE} target="_blank" rel="noopener noreferrer">
             <div style={{ marginRight: '15px' }}>
               {config.name}
             </div>
