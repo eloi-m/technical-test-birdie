@@ -45,7 +45,7 @@ class Table extends React.Component{
 				<div style={{fontStyle:"italic", padding:"5%"}}> 
 					{data.length < numberOfDisplayedRows
 						? null
-						: data.slice(numberOfDisplayedRows - data.length).length + " rows omitted"
+						: data.length - numberOfDisplayedRows + " rows omitted"
 				}
 				</div>
 		</div>

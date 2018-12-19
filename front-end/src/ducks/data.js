@@ -31,7 +31,7 @@ export const loadColumns = () => (dispatch) => {
 	.then(columns => {
 		dispatch({
 			type: LOAD_COLUMNS, 
-			payload: columns.map((e) => e.Field)
+			payload: columns
 		});
 	});	
 };
