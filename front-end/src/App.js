@@ -8,7 +8,7 @@ import Header from './Components/Header';
 import Table from './Components/Table/Table';
 import ColumnSelector from './Components/ColumnSelector';
 
-import config from '../config';
+import config from './config';
 
 const TABLE_STYLE = {
   marginTop: '2%',
