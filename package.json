@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node --presets env,stage-2  ./bin/www",
+    "start": "./node_modules/.bin/concurrently \"npm run start-back\" \"npm run start-front\"",
     "start-front": "cd front-end && npm start",
-    "start-app": "./node_modules/.bin/concurrently \"npm start\" \"npm run start-front\""
+    "start-back": "nodemon --exec babel-node --presets env,stage-2  ./bin/www",
+    "postinstall": "echo postinstall time; cd front-end && npm install && npm install && cd .."
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
