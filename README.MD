@@ -2,6 +2,10 @@
 
 This test was made using `express-generator` for the back-end and `create-react-app` for the front-end.
 
+This test is available on Heroku at the following link : https://technical-test-birdie.herokuapp.com
+
+
+
 ## Install packages
 
 To install packages, please run in the root folder : 
